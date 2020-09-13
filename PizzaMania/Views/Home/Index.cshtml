@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h3>Pizza's</h3>
+
+<table>
+    <tr>
+        <th width="300">Denumirea</th>
+        <th width="100">Pret</th>
+        <th width="500">Ingrediente</th>
+        <th width="50"></th>
+    </tr>
+    @foreach(var p in ViewBag.Pizzas)
+    {
+
+    <tr>
+        <td>@p.name</td>
+        <td>@p.price</td>
+        <td>@p.ingredients</td>
+        <td><a href="Home/Order/@p.id">Order</a></td>
+    </tr>
+    }
+</table>
