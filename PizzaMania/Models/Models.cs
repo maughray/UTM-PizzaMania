@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -28,5 +29,19 @@ namespace PizzaMania.Models
         public int pizzaid { get; set; }
         public int ingredientId { get; set; }
         public int ingredientWeight { get; set; }
+    }
+
+    public class Order
+    {
+        public int id { get; set; }
+        public string pizzaName { get; set; }
+        public PizzaStatus status { get; set; }
+    }
+
+    public enum PizzaStatus
+    {
+        Pending = 0,
+        Preparing = 1,
+        Done = 2
     }
 }

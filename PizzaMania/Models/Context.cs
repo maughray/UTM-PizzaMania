@@ -11,6 +11,7 @@ namespace PizzaMania.Models
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Pizza> Pizzas { get; set; }
         public DbSet<PizzaIngredient> PizzaIngredients { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 
     public class PizzaDbInitializer: DropCreateDatabaseAlways<Context>

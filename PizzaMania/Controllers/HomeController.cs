@@ -48,6 +48,7 @@ namespace PizzaMania.Controllers
 
         public ActionResult Order(int id)
         {
+            var pizza = context.Pizzas.Where(p => p.id == id).First();
             var requiredIngredients = context.PizzaIngredients.Where(i => i.pizzaid == id);
             var ingredients = context.Ingredients;
 
@@ -69,9 +70,29 @@ namespace PizzaMania.Controllers
                 context.Ingredients.Attach(i);
                 context.Entry(i).Property(x => x.weight).IsModified = true;
             }
-            context.SaveChanges();
 
-            return Content("SUCCESS!");
+            var orderId = context.Orders.Count() + 1;
+            CreateOrder(pizza.name, orderId);
+
+            return Redirect("/Home/OrderStatus/" + orderId);
+        }
+
+        public ActionResult OrderStatus(int id)
+        {
+            var orders = context.Orders.Count();
+            var order = context.Orders.Where(o => o.id == id).First();
+            Response.AddHeader("Refresh", "5");
+            return Content("Order status: " + order.status.ToString());
+        }
+
+        private void CreateOrder(string name, int id)
+        {
+            Order order = new Order();
+            order.id = id;
+            order.pizzaName = name;
+            order.status = PizzaStatus.Pending;
+            context.Orders.Add(order);
+            context.SaveChanges();
         }
     }
 }
