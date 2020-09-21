@@ -6,6 +6,7 @@
 
 <table>
     <tr>
+        <th width="100"></th>
         <th width="300">Denumirea</th>
         <th width="100">Pret</th>
         <th width="500">Ingrediente</th>
@@ -13,12 +14,12 @@
     </tr>
     @foreach(var p in ViewBag.Pizzas)
     {
-
     <tr>
+        <td><img src="@Url.Content("~/Content/Images/" + p.name +  ".jpg")" width="100" height="100" /></td>
         <td>@p.name</td>
         <td>@p.price</td>
         <td>@p.ingredients</td>
-        <td><a href="Home/Order/@p.id">Order</a></td>
+        <td><input type="text" id="txtName" runat="server" /></td>
     </tr>
     }
 </table>

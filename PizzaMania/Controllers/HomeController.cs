@@ -41,7 +41,6 @@ namespace PizzaMania.Controllers
                     }
                 }    
             }
-
             ViewBag.Pizzas = pizzas;
             return View();
         }
@@ -72,7 +71,8 @@ namespace PizzaMania.Controllers
             }
 
             var orderId = context.Orders.Count() + 1;
-            CreateOrder(pizza.name, orderId);
+            
+            // Create order
 
             return Redirect("/Home/OrderStatus/" + orderId);
         }
@@ -83,16 +83,6 @@ namespace PizzaMania.Controllers
             var order = context.Orders.Where(o => o.id == id).First();
             Response.AddHeader("Refresh", "5");
             return Content("Order status: " + order.status.ToString());
-        }
-
-        private void CreateOrder(string name, int id)
-        {
-            Order order = new Order();
-            order.id = id;
-            order.pizzaName = name;
-            order.status = PizzaStatus.Pending;
-            context.Orders.Add(order);
-            context.SaveChanges();
         }
     }
 }
