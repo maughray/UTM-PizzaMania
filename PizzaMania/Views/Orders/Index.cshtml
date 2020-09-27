@@ -7,15 +7,15 @@
 
 <table>
     <tr>
-        <th width="30">ID</th>
-        <th width="200">Denumirea</th>
+        <th width="100">Masa</th>
+        <th width="500">Denumirea</th>
         <th width="100"></th>
     </tr>
     @foreach (var p in ViewBag.pendingOrders)
     {
         <tr>
-            <td>@p.id</td>
-            <td>@p.pizzaName</td>
+            <td>@p.tableId</td>
+            <td>@p.pizzas</td>
             <td><a href="/Orders/SetPreparing/@p.id">Prepare</a></td>
         </tr>
     }
@@ -28,15 +28,15 @@
 
 <table>
     <tr>
-        <th width="30">ID</th>
-        <th width="200">Denumirea</th>
+        <th width="30">Masa</th>
+        <th width="500">Pizzas</th>
         <th width="100"></th>
     </tr>
     @foreach (var p in ViewBag.preparingOrders)
     {
         <tr>
-            <td>@p.id</td>
-            <td>@p.pizzaName</td>
+            <td>@p.tableId</td>
+            <td>@p.pizzas</td>
             <td><a href="/Orders/SetDone/@p.id">Done</a></td>
         </tr>
     }

@@ -14,9 +14,24 @@ namespace PizzaMania.Controllers
         // GET: Orders
         public ActionResult Index()
         {
-            var orders = context.Orders;
+            var orders = context.Orders.ToList();
+
+            foreach(Order order in orders)
+            {
+                var pizzas = context.OrderPizzas.Where(o => o.orderId == order.id).ToList();
+                foreach(OrderPizza op in pizzas)
+                {
+                    order.pizzas += op.pizzaName;
+                    if (op != pizzas.Last())
+                    {
+                        order.pizzas += ", ";
+                    }
+                }
+            }
+
             ViewBag.pendingOrders = orders.Where(o => o.status == PizzaStatus.Pending);
             ViewBag.preparingOrders = orders.Where(o => o.status == PizzaStatus.Preparing);
+
             Response.AddHeader("Refresh", "5");
             return View();
         }

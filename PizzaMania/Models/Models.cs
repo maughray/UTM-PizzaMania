@@ -36,6 +36,9 @@ namespace PizzaMania.Models
         public int id { get; set; }
         public int tableId { get; set; }
         public PizzaStatus status { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        public string pizzas { get; set; }
     }
 
     public class OrderPizza
@@ -43,12 +46,14 @@ namespace PizzaMania.Models
         public int id { get; set; }
         public int orderId { get; set; }
         public int pizzaId { get; set; }
+        public string pizzaName { get; set; }
     }
 
     public enum PizzaStatus
     {
         Pending = 0,
         Preparing = 1,
-        Done = 2
+        Done = 2,
+        None = 3
     }
 }

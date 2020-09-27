@@ -2,6 +2,17 @@
     ViewBag.Title = "Home Page";
 }
 
+@if (ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.SuccessMessage");
+            };
+    </script>
+
+}
+
 <h3>Pizza's</h3>
 
 <table>
@@ -12,14 +23,38 @@
         <th width="500">Ingrediente</th>
         <th width="50"></th>
     </tr>
-    @foreach(var p in ViewBag.Pizzas)
+    @foreach (var p in ViewBag.Pizzas)
     {
-    <tr>
-        <td><img src="@Url.Content("~/Content/Images/" + p.name +  ".jpg")" width="100" height="100" /></td>
-        <td>@p.name</td>
-        <td>@p.price</td>
-        <td>@p.ingredients</td>
-        <td><input type="text" id="txtName" runat="server" /></td>
-    </tr>
+        <tr>
+            <td><img src="@Url.Content("~/Content/Images/" + p.name +  ".jpg")" width="100" height="100" /></td>
+            <td>@p.name</td>
+            <td>@p.price</td>
+            <td>@p.ingredients</td>
+            <td>@Html.ActionLink("Add to card", "AddToCard", "Home", new { tableId = ViewBag.tableId, pizzaId = p.id }, null)</td>
+        </tr>
     }
 </table>
+
+<br />
+<br />
+<br />
+
+<h3>Card items</h3>
+
+<table>
+    <tr>
+        <th>Pizza name</th>
+    </tr>
+    @foreach (var p in ViewBag.CardItems)
+    {
+        <tr>
+            <td>@p.pizzaName</td>
+        </tr>
+    }
+</table>
+
+<br />
+<br />
+<br />
+
+<h3><a href="/Home/Order?tableId=@ViewBag.tableId")>Order</a></h3>
