@@ -1,0 +1,20 @@
+﻿@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/Site.css")
+@Scripts.Render("~/bundles/modernizr")
+<link href="https://fonts.googleapis.com/css2?family=Courgette&family=Sansita+Swashed:wght@300&display=swap" rel="stylesheet">
+@{ ViewBag.Title = "MainHome"; }
+
+<body style="background: url('/Content/Background/pizza2.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover; 
+        -moz-background-size: cover; 
+        -o-background-size: cover; 
+        background-size: cover;">
+
+    <div class="vertical-center">
+        <div class="container ">
+            <h1 style="color:white"><p class="slogan" style=" margin-left:5% ">Pizza Mania</p></h1>
+            <h2 style="color:white"><p class="slogan" style=" ">Eat and get out of here !</p></h2>
+            @Html.ActionLink("Order Something", "Index", "Home", new { area = "" }, new { @class = "ghost-button" })
+        </div>
+    </div>
+</body>

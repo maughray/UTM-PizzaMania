@@ -1,0 +1,42 @@
+﻿@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@model IEnumerable<PizzaMania.Models.Ingredient>
+
+@{ ViewBag.Title = "Index"; }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-striped">
+        <thead class="text-uppercase">
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.weight)
+                </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">
+                    @Html.DisplayFor(modelItem => item.name)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.weight)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "text-success" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "text-danger" })
+                </td>
+            </tr>
+}
+
+    </table>

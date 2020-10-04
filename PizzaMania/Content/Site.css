@@ -1,0 +1,109 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+/*    background: url('/Content/Background/pizza2.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+    /*    background-repeat: no-repeat;*/
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.slogan {
+    font-family: 'Sansita Swashed', cursive;
+    text-shadow: 4px 4px 8px #000;
+}
+
+.ghost-button {
+    display: inline-block;
+    width: 200px;
+    padding: 8px;
+    color: #fff;
+    border: 1px solid #fff;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    margin-left: 5%;
+    text-shadow: 4px 4px 8px #000;
+}
+    .ghost-button:hover,
+    .ghost-button:active {
+        background-color: #fff;
+        color: #000;
+        text-shadow: 4px 4px 8px #000;
+    }
+
+.vertical-center {
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+}
+    .vertical-center:before { /* create a full-height inline block pseudo=element */
+        content: " ";
+        display: inline-block;
+        vertical-align: middle; /* vertical alignment of the inline element */
+        height: 100%;
+    }
+
+    .vertical-center > .container {
+        max-width: 100%;
+        display: inline-block;
+        vertical-align: middle; /* vertical alignment of the inline element */
+        /* reset the font property */
+        font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+
+@media only screen and (max-device-width: 768px) {
+    .vertical-center:before {
+        vertical-align: top;
+        /* Or */
+    }
+}
+
+@media only screen and (max-device-width: 480px) {
+    .vertical-center:before {
+        vertical-align: top;
+    }
+}
+
+.container-fluid {
+    height: 100%;
+    display: table;
+    width: 100%;
+    padding: 0;
+}
+
+.row-fluid {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+
+.centering {
+    float: none;
+    margin: 0 auto;
+}

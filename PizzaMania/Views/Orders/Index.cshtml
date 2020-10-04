@@ -1,0 +1,46 @@
+﻿@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@{ ViewBag.Title = "Orders"; }
+
+<h2>Pending orders</h2>
+        <table class="table table-striped">
+            <thead class="text-uppercase">
+                <tr>
+                    <th scope="col">Masa</th>
+                    <th scope="col">Denumirea</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in ViewBag.pendingOrders)
+                {
+                    <tr>
+                        <th scope="row">@p.tableId</th>
+                        <td>@p.pizzas</td>
+                        <td><a href="/Orders/SetPreparing/@p.id" class="btn btn-primary btn-large">Prepare</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+<br />
+<br />
+
+<h2>Preparing orders</h2>
+
+        <table class="table table-striped">
+            <tr>
+                <th scope="col">Masa</th>
+                <th scope="col">Pizzas</th>
+                <th scope="col"></th>
+            </tr>
+            @foreach (var p in ViewBag.preparingOrders)
+            {
+                <tr>
+                    <th scope="row">@p.tableId</th>
+                    <td>@p.pizzas</td>
+                    <td><a href="/Orders/SetDone/@p.id" class="btn btn-primary btn-success">Done</a></td>
+                </tr>
+            }
+        </table>

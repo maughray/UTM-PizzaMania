@@ -1,0 +1,60 @@
+﻿@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/tableOrder.css")
+@Scripts.Render("~/bundles/modernizr")
+
+@{ ViewBag.Title = "Home Page"; }
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.SuccessMessage");
+            };
+    </script>
+}
+
+<h3>Pizza's</h3>
+
+<div class="pricingTable">
+    <ul class="pricingTable-firstTable">
+        @foreach (var p in ViewBag.Pizzas)
+        {
+        <li class="pricingTable-firstTable_table">
+            <h1 class="pricingTable-firstTable_table__header">@p.name</h1>
+            <p class="pricingTable-firstTable_table__pricing">@p.price Lei</p>
+            <p class="pricingTable-firstTable_table__pricing"><span><img src="@Url.Content("~/Content/Images/" + p.name +  ".jpg")" width="200" height="200" /></span></p>
+            <ul class="pricingTable-firstTable_table__options">
+                <li>@p.ingredients</li>
+            </ul>
+            @Html.ActionLink("Add to card", "AddToCard", "Home", new { tableId = ViewBag.tableId, pizzaId = p.id }, new { @class = "pricingTable-firstTable_table__getstart" })
+        </li>
+        }
+    </ul>
+</div>
+<br />
+<br />
+<br />
+
+<h3>Card items</h3>
+
+
+<table class="table table-striped">
+    <thead class="text-uppercase">
+        <tr>
+            <th>Pizza name</th>
+        </tr>
+    </thead>
+    @foreach (var p in ViewBag.CardItems)
+    {
+        <tr>
+            <td scope="row">@p.pizzaName</td>
+        </tr>
+    }
+</table>
+
+<br />
+<br />
+<br />
+
+<h3><a class="btn btn-primary" href="/Home/Order?tableId=@ViewBag.tableId" )>Order</a></h3>
